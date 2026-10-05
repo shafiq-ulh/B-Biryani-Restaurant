@@ -1,0 +1,79 @@
+/* ==========================================================================
+   MobileBottomBar — persistent Call + WhatsApp actions (< 900px)
+   ========================================================================== */
+
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 95;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  height: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom, 0px));
+  padding: 0.55rem 0.75rem calc(0.55rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(252, 248, 241, 0.92);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -12px 32px -22px rgba(13, 10, 9, 0.6);
+}
+
+.call,
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 46px;
+  border-radius: 12px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1;
+  transition:
+    transform var(--dur) var(--ease),
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.call {
+  flex: none;
+  width: 96px;
+  color: var(--text-strong);
+  background: var(--cream-200);
+  border: 1px solid var(--line);
+}
+
+.call:hover {
+  background: var(--cream-300);
+}
+
+.whatsapp {
+  flex: 1;
+  color: var(--cream-50);
+  background: var(--wine-500);
+  box-shadow: 0 12px 26px -16px rgba(103, 19, 25, 0.9);
+}
+
+.whatsapp:hover {
+  background: var(--wine-600);
+}
+
+.call:active,
+.whatsapp:active {
+  transform: scale(0.98);
+}
+
+@media (min-width: 900px) {
+  .bar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .call:hover,
+  .whatsapp:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,121 @@
+.section {
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  gap: clamp(2.25rem, 1.5rem + 3vw, 4rem);
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  align-items: flex-start;
+}
+
+.title {
+  font-size: clamp(1.9rem, 1.3rem + 2.2vw, 2.9rem);
+}
+
+.details {
+  display: grid;
+  gap: 1.1rem;
+  width: 100%;
+  margin-block: 0.5rem;
+}
+
+.details li {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  font-size: var(--fs-sm);
+}
+
+.details li > svg {
+  flex: none;
+  margin-top: 0.15rem;
+  color: var(--wine-500);
+}
+
+.details span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  color: var(--text-muted);
+}
+
+.details strong {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-strong);
+}
+
+.details a:hover {
+  color: var(--wine-600);
+}
+
+.ratingLine {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ---------- map ---------- */
+
+.mapWrap {
+  width: 100%;
+}
+
+.mapCard {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: clamp(300px, 45vw, 440px);
+  border: 0;
+  background: var(--cream-300);
+}
+
+.mapFooter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.1rem;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  border-top: 1px solid var(--line);
+}
+
+.mapFooter > svg {
+  color: var(--wine-500);
+  flex: none;
+}
+
+.mapFooter a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--wine-600);
+}
+
+.mapFooter a:hover {
+  color: var(--wine-400);
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  }
+}

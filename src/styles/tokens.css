@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Design tokens — B Biryani
+   Warm desi palette: charcoal, burgundy, saffron, cream, earth.
+   ========================================================================== */
+
+:root {
+  /* --- surfaces --- */
+  --ink-900: #0d0a09;
+  --ink-850: #120e0c;
+  --ink-800: #171310;
+  --ink-700: #1e1815;
+  --ink-600: #29211d;
+  --ink-500: #372d27;
+
+  /* --- brand red / burgundy --- */
+  --wine-800: #4d0f13;
+  --wine-700: #671319;
+  --wine-600: #7f1a1f;
+  --wine-500: #96202a;
+  --wine-400: #b2353c;
+
+  /* --- saffron / gold --- */
+  --saffron-600: #c98c12;
+  --saffron-500: #e0a526;
+  --saffron-400: #f0bd52;
+  --saffron-300: #f7d288;
+
+  /* --- creams / paper --- */
+  --cream-50: #fffdf9;
+  --cream-100: #fcf8f1;
+  --cream-200: #f6efe3;
+  --cream-300: #efe4d4;
+  --cream-400: #e5d7c3;
+
+  /* --- earthy neutrals --- */
+  --earth-600: #6b4b2e;
+  --earth-500: #85684a;
+  --earth-400: #a3876a;
+
+  /* --- semantic text --- */
+  --text-strong: #171310;
+  --text-body: #3d342e;
+  --text-muted: #6f635b;
+  --text-on-dark: #fcf8f1;
+  --text-on-dark-muted: rgba(252, 248, 241, 0.74);
+  --text-on-dark-faint: rgba(252, 248, 241, 0.56);
+
+  /* --- brand shortcuts --- */
+  --bg: var(--cream-100);
+  --surface: var(--cream-50);
+  --brand: var(--wine-500);
+  --brand-strong: var(--wine-600);
+  --accent: var(--saffron-500);
+  --line: rgba(23, 19, 16, 0.12);
+  --line-dark: rgba(252, 248, 241, 0.14);
+
+  /* --- typography --- */
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --fs-display: clamp(2.75rem, 1.4rem + 5.2vw, 5rem);
+  --fs-h1: clamp(2.4rem, 1.4rem + 3.6vw, 4rem);
+  --fs-h2: clamp(2rem, 1.3rem + 2.6vw, 3.25rem);
+  --fs-h3: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+  --fs-h4: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+  --fs-body: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --fs-lead: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+  --fs-sm: 0.9375rem;
+  --fs-xs: 0.8125rem;
+  --fs-eyebrow: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);
+
+  --lh-tight: 1.06;
+  --lh-heading: 1.14;
+  --lh-body: 1.65;
+
+  --ls-eyebrow: 0.18em;
+  --ls-display: -0.02em;
+
+  /* --- layout --- */
+  --container: 1240px;
+  --container-narrow: 940px;
+  --gutter: clamp(1.15rem, 0.6rem + 2vw, 2.5rem);
+  --section-y: clamp(4rem, 2.5rem + 5vw, 7.5rem);
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* --- elevation --- */
+  --shadow-xs: 0 1px 2px rgba(13, 10, 9, 0.06);
+  --shadow-sm: 0 2px 8px rgba(13, 10, 9, 0.07);
+  --shadow-md: 0 10px 30px -12px rgba(13, 10, 9, 0.24);
+  --shadow-lg: 0 26px 60px -28px rgba(13, 10, 9, 0.4);
+  --shadow-dark: 0 20px 50px -30px rgba(0, 0, 0, 0.85);
+
+  /* --- motion --- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 0.28s;
+  --dur-slow: 0.5s;
+
+  /* --- misc --- */
+  --nav-h: 76px;
+  --mobile-bar-h: 66px;
+  --focus: 0 0 0 3px var(--cream-50), 0 0 0 5px var(--saffron-500);
+  --focus-dark: 0 0 0 3px var(--ink-900), 0 0 0 5px var(--saffron-400);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --nav-h: 64px;
+  }
+}

@@ -1,0 +1,27 @@
+/* Self-hosted webfonts (latin subset).
+   Fraunces — display / headings. Inter — UI + body copy.
+   Both are variable fonts, so a single file covers the full weight range. */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/fraunces-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('/fonts/fraunces-italic.woff2') format('woff2');
+}

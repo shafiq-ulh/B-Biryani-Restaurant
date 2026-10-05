@@ -1,0 +1,102 @@
+/* ==========================================================================
+   Menu page
+   ========================================================================== */
+
+.gridSection {
+  padding-top: clamp(2.25rem, 1.6rem + 2.5vw, 3.5rem);
+}
+
+.gridHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+}
+
+.gridTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+}
+
+.gridCount {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.grid {
+  display: grid;
+  gap: 1.35rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 275px), 1fr));
+}
+
+/* ---------- availability note ---------- */
+
+.note {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 2rem + 2vw, 3.75rem);
+  padding: clamp(1.4rem, 1rem + 1.6vw, 2rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(224, 165, 38, 0.4);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(240, 189, 82, 0.16), transparent 55%),
+    var(--cream-50);
+}
+
+.note > svg {
+  color: var(--saffron-600);
+}
+
+.note div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 62ch;
+}
+
+.note strong {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+
+.note p {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.noteBtn {
+  align-self: stretch;
+}
+
+/* ---------- CTA row ---------- */
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(2.25rem, 1.8rem + 2vw, 3.25rem);
+}
+
+@media (min-width: 640px) {
+  .note {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .noteBtn {
+    align-self: center;
+    flex: none;
+    margin-left: auto;
+  }
+}

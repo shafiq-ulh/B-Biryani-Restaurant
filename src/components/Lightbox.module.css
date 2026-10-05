@@ -1,0 +1,149 @@
+/* ==========================================================================
+   Lightbox — full-screen photo viewer
+   ========================================================================== */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  background: rgba(13, 10, 9, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fadeIn 0.25s var(--ease);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.toolbar {
+  position: absolute;
+  top: clamp(0.75rem, 2vw, 1.5rem);
+  left: clamp(0.75rem, 2vw, 1.5rem);
+  right: clamp(0.75rem, 2vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  pointer-events: none;
+}
+
+.counter {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text-on-dark-faint);
+}
+
+.close {
+  pointer-events: auto;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line-dark);
+  background: rgba(252, 248, 241, 0.08);
+  color: var(--cream-50);
+  transition:
+    background-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.close:hover {
+  background: rgba(252, 248, 241, 0.2);
+  transform: rotate(90deg);
+}
+
+.figure {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.figure img {
+  max-width: min(92vw, 1400px);
+  max-height: 76vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-dark);
+  background: var(--ink-800);
+}
+
+.caption {
+  max-width: 60ch;
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--text-on-dark-muted);
+}
+
+.nav {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--line-dark);
+  background: rgba(252, 248, 241, 0.08);
+  color: var(--cream-50);
+  transition:
+    background-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.nav:hover {
+  background: rgba(252, 248, 241, 0.2);
+  transform: scale(1.06);
+}
+
+.prev {
+  grid-column: 1;
+}
+
+.next {
+  grid-column: 3;
+}
+
+@media (max-width: 640px) {
+  .overlay {
+    grid-template-columns: 1fr;
+    align-content: center;
+    padding-top: 4.5rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .figure {
+    grid-column: 1;
+  }
+
+  .nav {
+    position: fixed;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    width: 54px;
+    height: 54px;
+  }
+
+  .prev {
+    left: 1rem;
+  }
+
+  .next {
+    right: 1rem;
+  }
+
+  .figure img {
+    max-height: 66vh;
+  }
+}

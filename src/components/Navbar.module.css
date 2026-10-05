@@ -1,0 +1,340 @@
+/* ==========================================================================
+   Navbar — sticky header + mobile drawer
+   ========================================================================== */
+
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--nav-h);
+  color: var(--cream-50);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    backdrop-filter var(--dur) var(--ease);
+}
+
+.solid {
+  background: rgba(252, 248, 241, 0.88);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom-color: var(--line);
+  box-shadow: 0 6px 24px -18px rgba(13, 10, 9, 0.5);
+  color: var(--text-strong);
+}
+
+.open {
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* ---------- desktop nav ---------- */
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: clamp(0.4rem, 1.6vw, 1.4rem);
+}
+
+.navLink {
+  position: relative;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: inherit;
+  opacity: 0.86;
+  padding: 0.5rem 0.2rem;
+  transition:
+    opacity var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  right: 0.2rem;
+  bottom: 0.1rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--saffron-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+
+.navLink:hover {
+  opacity: 1;
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+}
+
+.navLinkActive {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.navLinkActive::after {
+  transform: scaleX(1);
+}
+
+.solid .navLink {
+  color: var(--text-body);
+  opacity: 0.78;
+}
+
+.solid .navLink:hover,
+.solid .navLinkActive {
+  color: var(--wine-600);
+  opacity: 1;
+}
+
+.solid .navLink::after {
+  background: var(--wine-500);
+}
+
+/* ---------- right cluster ---------- */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.rating {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(252, 248, 241, 0.34);
+  background: rgba(252, 248, 241, 0.1);
+  color: inherit;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.rating svg {
+  color: var(--saffron-500);
+}
+
+.rating:hover {
+  background: rgba(252, 248, 241, 0.2);
+}
+
+.ratingCount {
+  opacity: 0.72;
+  font-weight: 500;
+}
+
+.solid .rating {
+  border-color: var(--line);
+  background: var(--cream-100);
+  color: var(--text-body);
+}
+
+.solid .rating:hover {
+  background: var(--cream-200);
+}
+
+.headerCta {
+  display: none;
+}
+
+.burger {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  border: 1px solid rgba(252, 248, 241, 0.32);
+  color: inherit;
+  background: rgba(252, 248, 241, 0.1);
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.burger:hover {
+  background: rgba(252, 248, 241, 0.22);
+}
+
+.solid .burger {
+  border-color: var(--line);
+  background: var(--cream-100);
+  color: var(--text-strong);
+}
+
+.solid .burger:hover {
+  background: var(--cream-200);
+}
+
+/* ---------- drawer ---------- */
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--nav-h) + 1.5rem) var(--gutter) calc(var(--mobile-bar-h) + 1.75rem);
+  background:
+    radial-gradient(120% 80% at 85% 0%, rgba(150, 32, 42, 0.4), transparent 60%),
+    linear-gradient(180deg, var(--ink-900), var(--ink-850) 60%, var(--ink-800));
+  color: var(--text-on-dark);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease),
+    visibility var(--dur);
+  overflow-y: auto;
+}
+
+.drawerOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+}
+
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.drawerLink {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 9vw, 2.9rem);
+  font-weight: 600;
+  letter-spacing: var(--ls-display);
+  line-height: 1.25;
+  color: var(--text-on-dark);
+  padding: 0.45rem 0;
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 0.5s var(--ease-out),
+    transform 0.5s var(--ease-out),
+    color var(--dur) var(--ease);
+}
+
+.drawerOpen .drawerLink {
+  opacity: 1;
+  transform: none;
+}
+
+.drawerIndex {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--saffron-500);
+  opacity: 0.8;
+}
+
+.drawerLinkActive,
+.drawerLink:hover {
+  color: var(--saffron-400);
+}
+
+.drawerFoot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-dark);
+}
+
+.drawerContact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  color: var(--text-on-dark);
+}
+
+.drawerContact:hover {
+  color: var(--saffron-400);
+}
+
+.drawerAddress {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--fs-sm);
+  color: var(--text-on-dark-faint);
+  line-height: 1.5;
+}
+
+.drawerHours {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--saffron-400);
+}
+
+/* ---------- breakpoints ---------- */
+
+@media (min-width: 640px) {
+  .rating {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 900px) {
+  .nav {
+    display: flex;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .headerCta {
+    display: inline-flex;
+  }
+
+  .drawer {
+    display: none;
+  }
+
+  .ratingCount {
+    display: inline;
+  }
+}
+
+@media (max-width: 899px) {
+  .ratingCount {
+    display: none;
+  }
+}
